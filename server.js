@@ -11,9 +11,9 @@ app.get("/", async (request, response) => {
     await page.goto('https://developers.google.com/web/tools/puppeteer');
     await page.screenshot({path: 'puppeteer.png'});
     await browser.close();
-    response.sendFile('puppeteer.png');
+    response.sendFile('/app/puppeteer.png');
   } catch (error) {
-    console.log(error);
+    response.status(503).end(error.message);
   }
 });
 
