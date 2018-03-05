@@ -8,7 +8,7 @@ app.get("/", async (request, response) => {
       args: ['--no-sandbox']
     });
     const page = await browser.newPage();
-    await page.goto('https://www.developers.google.com/web/tools/puppeteer');
+    await page.goto('https://developers.google.com/web/tools/puppeteer');
     await page.screenshot({path: 'puppeteer.png'});
     await browser.close();
     response.sendFile('puppeteer.png');
