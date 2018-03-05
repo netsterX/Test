@@ -1,1 +1,5 @@
-Test if [Puppeteer](https://github.com/GoogleChrome/puppeteer) is working on Glitch.
+# puppeteer-example
+
+A working example of Puppeteer on Glitch.
+
+Tweet @kaycebasques for discussion.

@@ -1,14 +1,11 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "my-glitch-app",
-  "version": "0.0.1",
-  "description": "What am I about?",
+  "name": "puppeteer-example",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "A working example of Puppeteer on Glitch.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "install": "node_modules/puppeteer/.local-chromium/linux-536395/chrome-linux/chrome --version"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.16.2",
@@ -18,12 +15,13 @@
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/welcome-project"
+    "url": "https://glitch.com/edit/#!/puppeteer-example"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "glitch",
-    "express"
+    "express",
+    "puppeteer"
   ]
 }
