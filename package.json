@@ -13,15 +13,5 @@
   },
   "engines": {
     "node": "8.x"
-  },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/puppeteer-example"
-  },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express",
-    "puppeteer"
-  ]
+  }
 }

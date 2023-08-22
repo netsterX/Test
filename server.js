@@ -4,7 +4,7 @@ const express = require('express'),
 const fs = require('fs');
 const path = require('path');
 
-
+app.use(express.static(path.resolve(__dirname, 'downloads')));
 app.get("/", async (request, response) => {
   try {
     const browser = await puppeteer.launch({
@@ -15,18 +15,19 @@ app.get("/", async (request, response) => {
     behavior: 'allow',
     downloadPath: path.resolve(__dirname, 'downloads') // Specify the desired download folder path
   });
-    const direct = path.resolve(__dirname, 'downloads');
-    fs.readdir(direct, (err, files) => {
-  if (err) {
-    console.error('Error reading directory:', err);
-    return;
-  }
+//    const direct = path.resolve(__dirname, 'downloads');
+  //  fs.readdir(direct, (err, files) => {
+  //if (err) {
+  //  console.error('Error reading directory:', err);
+  //  return;
+ // }
 
-  console.log('Files in directory:');
-  files.forEach(file => {
-    console.log(file);
-  });
-});
+  //console.log('Files in directory:');
+  //files.forEach(file => {
+  //  console.log(file);
+  //});
+//});
+    
     await page.goto('https://editor.fusionbrain.ai');
       await page.waitForSelector('button._5VvP5');
       await page.click('button._5VvP5');
@@ -50,13 +51,6 @@ app.get("/", async (request, response) => {
     await page.click('button.wdanV');
     await page.waitForSelector('button.I9yBt');
     await page.click('button.I9yBt');
-    //await page.waitForEvent('download');
-    //const [downloadedFile] = await page._client.send('Browser.getDownloadedFiles');
-    //const destinationPath = path.resolve(__dirname, 'downloads', downloadedFile.suggestedFilename);
-
-  // Move the downloaded file to the desired location
-  //fs.renameSync(downloadedFile.filePath, destinationPath);
-    
     response.type('png').send(await page.screenshot());
     await browser.close();
   } catch (error) {
