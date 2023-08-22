@@ -25,9 +25,26 @@ app.get("/", async (request, response) => {
   await page.type(textareaSelector, textToFill);
     await page.waitForSelector('button.I9yBt');
     await page.click('button.I9yBt');
+    const buttonClassName = '.I9yBt'; // Replace with the actual class name of the button
+  await page.waitForFunction(
+    (buttonClassName) => {
+      const button = document.querySelector(buttonClassName);
+      return button && !button.disabled;
+    },
+    {},
+    buttonClassName
+  );
+    await page.waitForSelector('button.wdanV');
+    await page.click('button.wdanV');
+    await page.waitForSelector('button.I9yBt');
+    await page.click('button.I9yBt');
+    //await page.waitForEvent('download');
+    //const [downloadedFile] = await page._client.send('Browser.getDownloadedFiles');
+    //const destinationPath = path.resolve(__dirname, 'downloads', downloadedFile.suggestedFilename);
+
+  // Move the downloaded file to the desired location
+  //fs.renameSync(downloadedFile.filePath, destinationPath);
     
-    
-    await page.waitForEvent('download');
     response.type('png').send(await page.screenshot());
     await browser.close();
   } catch (error) {
