@@ -6,7 +6,7 @@ const path = require('path');
 
 app.use(express.static(path.resolve(__dirname, 'downloads')));
 app.post("/api", async (req, res) => {
-  const prompt = req.body;
+  const prompt = req.body.prompt;
   try {
     const browser = await puppeteer.launch({
       args: ['--no-sandbox']
