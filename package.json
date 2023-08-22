@@ -10,7 +10,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "puppeteer": "^1.14.0",
-    "wait-on": "^7.0.1"
+    "cors": "^2.8.5"
   },
   "engines": {
     "node": "8.x"
