@@ -22,7 +22,7 @@ const corsOptions = {
 
 //app.use(cors(corsOptions));
 
-app.get("/", async (request, response) => {
+app.get("/api/:prompt", async (request, response) => {
   try {
     const browser = await puppeteer.launch({
       args: ['--no-sandbox']
@@ -51,7 +51,7 @@ app.get("/", async (request, response) => {
     await page.waitForSelector('div._78Teq');
     await page.click('div._78Teq');
     const textareaSelector = 'textarea';
-  const textToFill = 'boy wearing glasses, portrait';
+  const textToFill = request.params.prompt;
   await page.type(textareaSelector, textToFill);
     await page.waitForSelector('button.I9yBt');
     await page.click('button.I9yBt');
