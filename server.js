@@ -21,7 +21,10 @@ const corsOptions = {
 };
 
 //app.use(cors(corsOptions));
-
+app.get('/ping', async (req, res) => {
+console.log('pinged');
+res.send('pong');
+});
 app.get("/api/:prompt", async (request, response) => {
   try {
     const browser = await puppeteer.launch({
