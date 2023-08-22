@@ -117,8 +117,45 @@ fs.readdir(direct, (err, files) => {
     response.send(data);
   });
     }
-    //response.type('png').send(await page.screenshot());
     await browser.close();
+      function emptyDirectory(directoryPath) {
+  try {
+    // Check if the directory exists
+    if (!fs.existsSync(directoryPath)) {
+      console.log(`Directory "${directoryPath}" does not exist.`);
+      return;
+    }
+
+    // Get all files and subdirectories in the directory
+    const files = fs.readdirSync(directoryPath);
+
+    // Iterate over each file and subdirectory
+    for (const file of files) {
+      const filePath = path.join(directoryPath, file);
+
+      // Check if it's a file or a subdirectory
+      const isFile = fs.statSync(filePath).isFile();
+
+      // If it's a file, delete it
+      if (isFile) {
+        fs.unlinkSync(filePath);
+      }
+      // If it's a subdirectory, recursively empty it
+      else {
+        emptyDirectory(filePath);
+        fs.rmdirSync(filePath);
+      }
+    }
+
+    console.log(`Directory "${directoryPath}" has been emptied.`);
+  } catch (err) {
+    console.error(`Error emptying directory: ${err}`);
+  }
+}
+
+// Usage example
+const directoryPath = path.join(__dirname, 'downloads/');
+emptyDirectory(directoryPath);
   } catch (error) {
     response.status(503).end(error.message);
   }
