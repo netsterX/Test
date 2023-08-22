@@ -20,7 +20,7 @@ const corsOptions = {
   },
 };
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 
 app.get("/", async (request, response) => {
   try {
