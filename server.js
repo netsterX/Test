@@ -164,6 +164,60 @@ emptyDirectory(directoryPath);
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.get('/v2/:prompt', async (request, response)=>{
+try {
+    // Launch Puppeteer with headless: false
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+
+    // Navigate to a web page
+    await page.goto('https://example.com'); // Replace with your website URL
+
+    // You can perform any interactions or operations here
+
+    // Capture a screenshot
+    const screenshot = await page.screenshot();
+
+    // Close the browser when done
+    await browser.close();
+
+    // Send the screenshot as a response
+    res.set('Content-Type', 'image/png');
+    res.send(screenshot);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+    res.status(500).send('Internal Server Error');
+  }
+});
+});
+
+
+
+    
+
+
+
+
+
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
